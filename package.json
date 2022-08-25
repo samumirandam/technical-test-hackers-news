@@ -1,0 +1,72 @@
+{
+  "name": "tecnical-test-hackers-news",
+  "version": "1.0.0",
+  "description": "tecnical test for Reign",
+  "main": "index.js",
+  "homepage": ".",
+  "scripts": {
+    "start": "webpack serve --open",
+    "build": "webpack --mode production",
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "author": "samumirandam <samuelchampi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/plugin-transform-runtime": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-react": "^7.18.6",
+    "@reduxjs/toolkit": "^1.8.5",
+    "@testing-library/react": "^13.3.0",
+    "axios": "^0.27.2",
+    "babel-loader": "^8.2.5",
+    "classnames": "^2.3.1",
+    "date-fns": "^2.29.2",
+    "dotenv-webpack": "^8.0.1",
+    "html-loader": "^4.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
+    "redux": "^4.2.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.7",
+    "babel-jest": "^28.1.3",
+    "css-loader": "^6.7.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
+    "mini-css-extract-plugin": "^2.6.1",
+    "redux-mock-store": "^1.5.4",
+    "redux-thunk": "^2.4.1",
+    "sass": "^1.54.5",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1"
+  },
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy",
+      "^@root(.*)$": "<rootDir>/src$1",
+      "^@api(.*)$": "<rootDir>/src/api$1",
+      "^@actions(.*)$": "<rootDir>/src/store/actions$1",
+      "^@reducers(.*)$": "<rootDir>/src/store/reducers$1",
+      "^@utils(.*)$": "<rootDir>/src/utils$1",
+      "^@components(.*)$": "<rootDir>/src/views/components$1",
+      "^@containers(.*)$": "<rootDir>/src/views/containers$1",
+      "^@pages(.*)$": "<rootDir>/src/views/pages$1",
+      "^@ui(.*)$": "<rootDir>/src/views/ui$1"
+    },
+    "setupFilesAfterEnv": [
+      "./src/setup-test.js"
+    ],
+    "testEnvironment": "jsdom",
+    "collectCoverage": true
+  }
+}

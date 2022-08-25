@@ -1,0 +1,35 @@
+# Created by https://www.toptal.com/developers/gitignore/api/react,vercel
+# Edit at https://www.toptal.com/developers/gitignore?templates=react,vercel
+
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+### Vercel ###
+.vercel
+
+### Vercel ###
+.netlify
+
+### Enviroment ###
+.env
+
+### Jest ###
+coverage
+
+### dist ###
+dist
+
+# End of https://www.toptal.com/developers/gitignore/api/react,vercel

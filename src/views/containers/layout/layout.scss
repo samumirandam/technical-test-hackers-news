@@ -1,0 +1,12 @@
+@import "@styles/vars";
+
+.Layout {
+  main {
+    display: grid;
+    grid-template-columns: auto minmax(320px, 1024px) auto;
+
+    > section {
+      grid-column: 2 / 3;
+    }
+  }
+}
