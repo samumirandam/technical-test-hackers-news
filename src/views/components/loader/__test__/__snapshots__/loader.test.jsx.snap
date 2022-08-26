@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for Loader component Should renders the same component 1`] = `
+<div>
+  <div
+    class="Loader"
+    data-testid="Loader"
+  >
+    <div
+      class="lds-grid"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</div>
+`;

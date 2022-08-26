@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { getStoryListAction } from '@actions';
 
@@ -9,7 +10,8 @@ import useLocalStorage from '@hooks/useLocalStorage';
 import StoryList from '@containers/story-list';
 
 import StoryCard from '@components/story-card';
-import { useNavigate, useParams } from 'react-router-dom';
+import Loader from '@components/loader';
+import Error from '@components/error';
 
 import Button from '@ui/button';
 import Select from '@ui/select';
@@ -22,12 +24,15 @@ const Home = () => {
   const { query } = useParams();
 
   const storyList = useSelector((state) => state.storyList?.data?.hits);
+  const isLoading = useSelector((state) => state.storyList?.isLoading);
+  const isError = useSelector((state) => state.storyList?.isError);
+  const errorDetail = useSelector((state) => state.storyList?.errorDetail);
 
   const {
     item: filter,
     saveItem: changeFilter,
-    // loading: filterLoading,
-    // error: filterError,
+    loading: filterLoading,
+    error: filterError,
   } = useLocalStorage('FILTER', '');
 
   const options = [
@@ -79,6 +84,8 @@ const Home = () => {
             />
           ))}
       </StoryList>
+      {(isLoading || filterLoading) && <Loader />}
+      {(isError || filterError) && <Error error={errorDetail || filterError} />}
     </section>
   );
 };
