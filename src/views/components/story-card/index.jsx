@@ -1,29 +1,40 @@
 import React from "react";
+import { formatDistanceToNow } from "date-fns";
 
-import FavoriteIcon from "../../../assets/images/iconmonstr-favorite-2.svg";
-import TimeIcon from "../../../assets/images/iconmonstr-time-2.svg";
+import Button from "@ui/button";
+
+import FavoriteIcon from "@images/iconmonstr-favorite-2.svg";
+import TimeIcon from "@images/iconmonstr-time-2.svg";
 
 import "./story-card.scss";
 
-const StoryCard = () => {
+const StoryCard = ({
+  author,
+  story_title,
+  story_url,
+  created_at,
+  handleFavorite,
+}) => {
+  const handleOpenUrl = () => {
+    window.open(story_url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="StoryCard">
-      <div className="StoryCard__content">
+      <Button className="StoryCard__content" onClick={handleOpenUrl}>
         <div className="StoryCard__data">
           <figure className="StoryCard__time-image">
             <TimeIcon />
           </figure>
-          <p>2 hours ago by author</p>
+          <p>{`${formatDistanceToNow(new Date(created_at))} by ${author}`}</p>
         </div>
-        <p className="StoryCard__title">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        </p>
-      </div>
-      <div className="StoryCard__favorite">
-        <figure>
+        <p className="StoryCard__title">{story_title}</p>
+      </Button>
+      <Button noStyles className="StoryCard__favorite" onClick={handleFavorite}>
+        <figure data-testid="favorite-button">
           <FavoriteIcon />
         </figure>
-      </div>
+      </Button>
     </div>
   );
 };

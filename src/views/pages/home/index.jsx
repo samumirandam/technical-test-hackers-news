@@ -17,7 +17,7 @@ const Home = () => {
   const storyList = useSelector((state) => state.storyList?.data?.hits);
 
   useEffect(() => {
-    dispatch(getStoryListAction());
+    dispatch(getStoryListAction({ query: "reactjs" }));
   }, []);
 
   return (
@@ -29,7 +29,18 @@ const Home = () => {
       <p className="Home__filter">DropDown</p>
       <StoryList>
         {storyList &&
-          storyList.map((story) => <StoryCard key={story.objectID} />)}
+          storyList.map((story) => (
+            <StoryCard
+              key={story.objectID}
+              author={story.author}
+              created_at={story.created_at}
+              story_title={story.story_title}
+              story_url={story.story_url}
+              handleFavorite={() => {
+                console.log(story);
+              }}
+            />
+          ))}
       </StoryList>
     </section>
   );

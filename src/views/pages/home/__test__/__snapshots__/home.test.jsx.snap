@@ -33,8 +33,9 @@ exports[`Test for Home page component Should renders the same component 1`] = `
       <div
         class="StoryCard"
       >
-        <div
-          class="StoryCard__content"
+        <button
+          class="Button StoryCard__content"
+          type="button"
         >
           <div
             class="StoryCard__data"
@@ -45,22 +46,25 @@ exports[`Test for Home page component Should renders the same component 1`] = `
               <svgrurl />
             </figure>
             <p>
-              2 hours ago by author
+              about 20 years by didericis
             </p>
           </div>
           <p
             class="StoryCard__title"
           >
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Threats of Blackouts Drive Japan to Embrace Nuclear Again
           </p>
-        </div>
-        <div
-          class="StoryCard__favorite"
+        </button>
+        <button
+          class="Button StoryCard__favorite noStyles"
+          type="button"
         >
-          <figure>
+          <figure
+            data-testid="favorite-button"
+          >
             <svgrurl />
           </figure>
-        </div>
+        </button>
       </div>
     </section>
   </section>
