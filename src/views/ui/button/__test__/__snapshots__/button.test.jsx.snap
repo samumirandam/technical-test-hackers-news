@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for Button ui component Should renders the same component 1`] = `
+<div>
+  <button
+    class="Button"
+    type="button"
+  >
+    Press
+  </button>
+</div>
+`;

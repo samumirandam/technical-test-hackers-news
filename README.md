@@ -2,7 +2,7 @@
 
 ## Deploy URLs
 
- [Production](netlify-url)
+ [Production](https://tecnical-test-hackers-news.netlify.app)
 
 
 ## Available Scripts
