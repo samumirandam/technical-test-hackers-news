@@ -60,7 +60,7 @@ const Home = () => {
   const handleFavorite = (story) => {
     let favoritesList = [];
     if (
-      favorites.includes((favorite) => favorite.objectID === story.objectID)
+      favorites.some((favorite) => favorite.objectID === story.objectID)
     ) {
       const favoriteIndex = favorites.findIndex(
         (favorite) => favorite.objectID === story.objectID,
@@ -100,7 +100,7 @@ const Home = () => {
               storyTitle={story.story_title}
               storyUrl={story.story_url}
               handleFavorite={() => handleFavorite(story)}
-              isFavorite={favorites.includes(
+              isFavorite={favorites.some(
                 (favorite) => favorite.objectID === story.objectID,
               )}
             />
