@@ -1,10 +1,11 @@
-import { getData } from "@api/get-data";
+// eslint-disable-next-line import/no-unresolved
+import { getData } from '@api/get-data';
 
 import {
   GET_STORY_LIST_LOADING,
   GET_STORY_LIST_SUCCESS,
   GET_STORY_LIST_ERROR,
-} from "./types";
+} from './types';
 
 export const getStoryListSteps = {
   request: () => ({
@@ -16,21 +17,18 @@ export const getStoryListSteps = {
       ...payload.data,
       hits: payload.data.hits
         .filter(
-          (story) =>
-            story.author &&
-            story.story_title &&
-            story.story_url &&
-            story.created_at
+          (story) => story.author
+            && story.story_title
+            && story.story_url
+            && story.created_at,
         )
-        .map((story) => {
-          return {
-            objectID: story.objectID,
-            author: story.author,
-            story_title: story.story_title,
-            story_url: story.story_url,
-            created_at: story.created_at,
-          };
-        }),
+        .map((story) => ({
+          objectID: story.objectID,
+          author: story.author,
+          story_title: story.story_title,
+          story_url: story.story_url,
+          created_at: story.created_at,
+        })),
     },
   }),
   error: (error) => ({

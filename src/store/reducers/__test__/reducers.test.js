@@ -1,20 +1,19 @@
-import reducer, { initialState } from "../index";
-
 import {
   GET_STORY_LIST_LOADING,
   GET_STORY_LIST_SUCCESS,
   GET_STORY_LIST_ERROR,
-} from "@actions/types";
+} from '@actions/types';
+import reducer, { initialState } from '../index';
 
-describe("Test for Reducers", () => {
-  test("Should return default state", () => {
-    expect(reducer({}, "")).toEqual({});
+describe('Test for Reducers', () => {
+  test('Should return default state', () => {
+    expect(reducer({}, '')).toEqual({});
   });
-  test("Should return initial state", () => {
-    expect(reducer(undefined, "")).toEqual(initialState);
+  test('Should return initial state', () => {
+    expect(reducer(undefined, '')).toEqual(initialState);
   });
 
-  test("Should get story list loading", () => {
+  test('Should get story list loading', () => {
     const payload = {};
     const action = {
       type: GET_STORY_LIST_LOADING,
@@ -30,7 +29,7 @@ describe("Test for Reducers", () => {
     expect(reducer(initialState, action)).toEqual(expected);
   });
 
-  test("Should get story list success", () => {
+  test('Should get story list success', () => {
     const payload = {};
     const action = {
       type: GET_STORY_LIST_SUCCESS,
@@ -47,7 +46,7 @@ describe("Test for Reducers", () => {
     expect(reducer(initialState, action)).toEqual(expected);
   });
 
-  test("Should get story list error", () => {
+  test('Should get story list error', () => {
     const payload = {};
     const action = {
       type: GET_STORY_LIST_ERROR,

@@ -1,8 +1,9 @@
+/* eslint-disable import/no-unresolved */
 import {
   GET_STORY_LIST_LOADING,
   GET_STORY_LIST_SUCCESS,
   GET_STORY_LIST_ERROR,
-} from "@actions/types";
+} from '@actions/types';
 
 export const initialState = {
   storyList: {
@@ -14,6 +15,7 @@ export const initialState = {
   },
 };
 
+// eslint-disable-next-line default-param-last
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_STORY_LIST_LOADING: {

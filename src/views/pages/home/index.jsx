@@ -1,28 +1,28 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { getStoryListAction } from "@actions";
+import { getStoryListAction } from '@actions';
 
-import StoryList from "@containers/story-list";
+import StoryList from '@containers/story-list';
 
-import StoryCard from "@components/story-card";
-import { useNavigate, useParams } from "react-router-dom";
+import StoryCard from '@components/story-card';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import Button from "@ui/button";
-import Select from "@ui/select";
+import Button from '@ui/button';
+import Select from '@ui/select';
 
-import "./home.scss";
+import './home.scss';
 
 const OPTIONS = [
-  { value: "angular", label: "Angular" },
-  { value: "reactjs", label: "Reactjs" },
-  { value: "vuejs", label: "Vuejs" },
+  { value: 'angular', label: 'Angular' },
+  { value: 'reactjs', label: 'Reactjs' },
+  { value: 'vuejs', label: 'Vuejs' },
 ];
 
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let { query } = useParams();
+  const { query } = useParams();
 
   const storyList = useSelector((state) => state.storyList?.data?.hits);
 
@@ -31,7 +31,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(getStoryListAction({ query: query ? query : OPTIONS[0].value }));
+    dispatch(getStoryListAction({ query: query || OPTIONS[0].value }));
   }, [query]);
 
   return (
@@ -46,8 +46,8 @@ const Home = () => {
         handleChange={handleChange}
       />
       <StoryList>
-        {storyList &&
-          storyList.map((story) => (
+        {storyList
+          && storyList.map((story) => (
             <StoryCard
               key={story.objectID}
               author={story.author}

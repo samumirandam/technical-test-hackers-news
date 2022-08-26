@@ -1,19 +1,19 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import { Provider } from "react-redux";
-import configureStore from "redux-mock-store";
-import reduxThunk from "redux-thunk";
-import { configureStore as configureReduxStore } from "@reduxjs/toolkit";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import reduxThunk from 'redux-thunk';
+import { configureStore as configureReduxStore } from '@reduxjs/toolkit';
+import { BrowserRouter } from 'react-router-dom';
 
-import reducer from "@reducers";
+import reducer from '@reducers';
 
 const middlewares = [reduxThunk];
 const mockStore = configureStore(middlewares);
 
 const AllTheProviders = ({ children }) => {
   const store = configureReduxStore({
-    reducer: reducer,
+    reducer,
   });
   const setupStore = { ...store.getState(), ...children.props };
   const compomentStore = mockStore(setupStore);
@@ -24,11 +24,10 @@ const AllTheProviders = ({ children }) => {
   );
 };
 
-const customRender = (ui, options) =>
-  render(ui, { wrapper: AllTheProviders, ...options });
+const customRender = (ui, options) => render(ui, { wrapper: AllTheProviders, ...options });
 
 // re-export everything
-export * from "@testing-library/react";
+export * from '@testing-library/react';
 
 // override render method
 export { customRender as render };

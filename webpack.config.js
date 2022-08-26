@@ -1,30 +1,30 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Dotenv = require("dotenv-webpack");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
-    publicPath: "/",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/',
     clean: true,
   },
-  mode: "development",
+  mode: 'development',
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
     alias: {
-      "@api": path.resolve(__dirname, "src/api/"),
-      "@styles": path.resolve(__dirname, "src/assets/styles/"),
-      "@images": path.resolve(__dirname, "src/assets/images/"),
-      "@actions": path.resolve(__dirname, "src/store/actions/"),
-      "@reducers": path.resolve(__dirname, "src/store/reducers/"),
-      "@utils": path.resolve(__dirname, "src/utils/"),
-      "@components": path.resolve(__dirname, "src/views/components/"),
-      "@containers": path.resolve(__dirname, "src/views/containers/"),
-      "@pages": path.resolve(__dirname, "src/views/pages/"),
-      "@ui": path.resolve(__dirname, "src/views/ui/"),
+      '@api': path.resolve(__dirname, 'src/api/'),
+      '@styles': path.resolve(__dirname, 'src/assets/styles/'),
+      '@images': path.resolve(__dirname, 'src/assets/images/'),
+      '@actions': path.resolve(__dirname, 'src/store/actions/'),
+      '@reducers': path.resolve(__dirname, 'src/store/reducers/'),
+      '@utils': path.resolve(__dirname, 'src/utils/'),
+      '@components': path.resolve(__dirname, 'src/views/components/'),
+      '@containers': path.resolve(__dirname, 'src/views/containers/'),
+      '@pages': path.resolve(__dirname, 'src/views/pages/'),
+      '@ui': path.resolve(__dirname, 'src/views/ui/'),
     },
   },
   module: {
@@ -33,39 +33,39 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
+            loader: 'html-loader',
           },
         ],
       },
       {
         test: /\.(css|scss)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.svg$/,
-        use: ["@svgr/webpack"],
+        use: ['@svgr/webpack'],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: "./index.html",
+      template: './public/index.html',
+      filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: '[name].css',
     }),
     new Dotenv(),
   ],
   devServer: {
-    allowedHosts: path.join(__dirname, "dist"),
+    allowedHosts: path.join(__dirname, 'dist'),
     compress: true,
     port: 3005,
     historyApiFallback: true,
