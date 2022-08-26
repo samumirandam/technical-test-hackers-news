@@ -15,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/">
             <Route index element={<Home />} />
+            <Route path="query/:query" element={<Home />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -6,7 +6,7 @@ import Button from "@ui/button";
 import "./header.scss";
 
 const Header = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <header className="Header">
