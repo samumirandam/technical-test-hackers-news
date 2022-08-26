@@ -56,4 +56,25 @@ describe('Test for Home page component', () => {
     });
     expect(global.window.location.pathname).toEqual('/');
   });
+
+  test('Should render loading state', () => {
+    const props = {
+      storyList: {
+        isLoading: true,
+      },
+    };
+    setup(props);
+    expect(screen.getByTestId('Loader')).toBeTruthy();
+  });
+
+  test('Should render error state', () => {
+    const props = {
+      storyList: {
+        isError: true,
+        errorDetail: 'test error',
+      },
+    };
+    setup(props);
+    expect(screen.getByText('test error')).toBeTruthy();
+  });
 });

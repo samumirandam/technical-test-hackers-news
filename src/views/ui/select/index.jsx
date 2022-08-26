@@ -13,7 +13,11 @@ const Select = ({ className, options, handleChange }) => (
     data-testid="Select"
   >
     {options.map((option) => (
-      <option key={option.value} value={option.value}>
+      <option
+        key={option.value}
+        value={option.value}
+        selected={option.selected}
+      >
         {option.label}
       </option>
     ))}
@@ -26,6 +30,7 @@ Select.propTypes = {
     PropTypes.shape({
       value: PropTypes.string,
       label: PropTypes.string,
+      selected: PropTypes.bool,
     }),
   ),
   handleChange: PropTypes.func,

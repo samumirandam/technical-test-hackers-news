@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for Error component Should renders the same component 1`] = `
+<div>
+  <div
+    class="Error"
+  >
+    <p>
+      test error
+    </p>
+  </div>
+</div>
+`;

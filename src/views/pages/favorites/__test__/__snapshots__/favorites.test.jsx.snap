@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for Favorites page component Should renders the same component 1`] = `
+<div>
+  <section
+    class="Favorites"
+    data-testid="Favorites"
+  >
+    <div
+      class="PageTabs Favorites__tabs"
+    >
+      <button
+        class="Button PageTabs__tab active"
+        type="button"
+      >
+        All
+      </button>
+      <button
+        class="Button PageTabs__tab"
+        type="button"
+      >
+        My faves
+      </button>
+    </div>
+    <section
+      class="StoryList"
+    />
+  </section>
+</div>
+`;
