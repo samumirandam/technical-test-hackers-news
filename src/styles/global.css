@@ -11,7 +11,7 @@ html {
 body {
   font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
-  background-color: #f1f1f5;
+  background-color: #fcfcfc;
 }
 
 img {
@@ -25,6 +25,7 @@ button {
   font-family: inherit;
   font-size: 100%;
   border: none;
+  background-color: transparent;
 }
 
 button:hover {

@@ -1,0 +1,9 @@
+@import "@styles/vars";
+
+.Button {
+  padding: 4px 8px;
+
+  &.noStyles {
+    padding: 0;
+  }
+}

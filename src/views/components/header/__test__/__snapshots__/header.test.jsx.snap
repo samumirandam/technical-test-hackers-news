@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for Header component Should renders the same component 1`] = `
+<div>
+  <header
+    class="Header"
+  >
+    <button
+      class="Button noStyles"
+      type="button"
+    >
+      <p
+        class="Header__logo"
+      >
+        HACKER NEWS
+      </p>
+    </button>
+  </header>
+</div>
+`;
