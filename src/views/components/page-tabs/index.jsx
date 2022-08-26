@@ -15,7 +15,9 @@ const PageTabs = ({ className }) => {
   return (
     <div className={classnames('PageTabs', className)}>
       <Button
-        className={classnames('PageTabs__tab', { active: pathname === '/' })}
+        className={classnames('PageTabs__tab', {
+          active: pathname !== '/favorites',
+        })}
         onClick={() => navigate('/')}
       >
         All
