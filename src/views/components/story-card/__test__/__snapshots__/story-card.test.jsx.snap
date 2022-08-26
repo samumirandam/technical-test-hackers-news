@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for StoryCard component Should renders the same component 1`] = `
+<div>
+  <div
+    class="StoryCard"
+  >
+    <button
+      class="Button StoryCard__content"
+      type="button"
+    >
+      <div
+        class="StoryCard__data"
+      >
+        <figure
+          class="StoryCard__time-image"
+        >
+          <svgrurl />
+        </figure>
+        <p>
+          about 20 years by didericis
+        </p>
+      </div>
+      <p
+        class="StoryCard__title"
+      >
+        Threats of Blackouts Drive Japan to Embrace Nuclear Again
+      </p>
+    </button>
+    <button
+      class="Button StoryCard__favorite noStyles"
+      type="button"
+    >
+      <figure
+        data-testid="favorite-button"
+      >
+        <svgrurl />
+      </figure>
+    </button>
+  </div>
+</div>
+`;
