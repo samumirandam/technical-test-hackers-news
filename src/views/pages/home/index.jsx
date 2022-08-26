@@ -35,6 +35,11 @@ const Home = () => {
     error: filterError,
   } = useLocalStorage('FILTER', '');
 
+  const { item: favorites, saveItem: changeFavorites } = useLocalStorage(
+    'FAVORITES',
+    [],
+  );
+
   const options = [
     { value: '', label: 'Select your news', selected: filter === '' },
     { value: 'angular', label: 'Angular', selected: filter === 'angular' },
@@ -50,6 +55,22 @@ const Home = () => {
       navigate('/');
       changeFilter('');
     }
+  };
+
+  const handleFavorite = (story) => {
+    let favoritesList = [];
+    if (
+      favorites.includes((favorite) => favorite.objectID === story.objectID)
+    ) {
+      const favoriteIndex = favorites.findIndex(
+        (favorite) => favorite.objectID === story.objectID,
+      );
+      favoritesList = [...favorites];
+      favoritesList.splice(favoriteIndex, 1);
+    } else {
+      favoritesList = [...favorites, story];
+    }
+    changeFavorites(favoritesList);
   };
 
   useEffect(() => {
@@ -75,12 +96,13 @@ const Home = () => {
             <StoryCard
               key={story.objectID}
               author={story.author}
-              created_at={story.created_at}
-              story_title={story.story_title}
-              story_url={story.story_url}
-              handleFavorite={() => {
-                console.log(story);
-              }}
+              createdAt={story.created_at}
+              storyTitle={story.story_title}
+              storyUrl={story.story_url}
+              handleFavorite={() => handleFavorite(story)}
+              isFavorite={favorites.includes(
+                (favorite) => favorite.objectID === story.objectID,
+              )}
             />
           ))}
       </StoryList>

@@ -44,6 +44,11 @@ describe('Test for Home page component', () => {
     fireEvent.click(screen.getByTestId('favorite-button'));
   });
 
+  test('Should render click in favorite icon', () => {
+    setup();
+    fireEvent.click(screen.getByTestId('favorite-button'));
+  });
+
   test('Should render change select', () => {
     setup();
     const select = screen.getByTestId('Select');
