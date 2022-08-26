@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,6 +15,7 @@ import Select from '@ui/select';
 import './home.scss';
 
 const OPTIONS = [
+  { value: '', label: 'Select your news' },
   { value: 'angular', label: 'Angular' },
   { value: 'reactjs', label: 'Reactjs' },
   { value: 'vuejs', label: 'Vuejs' },
@@ -27,7 +29,11 @@ const Home = () => {
   const storyList = useSelector((state) => state.storyList?.data?.hits);
 
   const handleChange = (value) => {
-    navigate(`/query/${value}`);
+    if (value) {
+      navigate(`/query/${value}`);
+    } else {
+      navigate('/');
+    }
   };
 
   useEffect(() => {

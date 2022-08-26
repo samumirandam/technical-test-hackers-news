@@ -24,7 +24,13 @@ exports[`Test for Home page component Should renders the same component 1`] = `
     </div>
     <select
       class="Select Home__filter"
+      data-testid="Select"
     >
+      <option
+        value=""
+      >
+        Select your news
+      </option>
       <option
         value="angular"
       >
