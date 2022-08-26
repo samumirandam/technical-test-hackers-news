@@ -22,11 +22,31 @@ exports[`Test for Home page component Should renders the same component 1`] = `
         My faves
       </button>
     </div>
-    <p
-      class="Home__filter"
+    <select
+      class="Select Home__filter"
+      data-testid="Select"
     >
-      DropDown
-    </p>
+      <option
+        value=""
+      >
+        Select your news
+      </option>
+      <option
+        value="angular"
+      >
+        Angular
+      </option>
+      <option
+        value="reactjs"
+      >
+        Reactjs
+      </option>
+      <option
+        value="vuejs"
+      >
+        Vuejs
+      </option>
+    </select>
     <section
       class="StoryList"
     >

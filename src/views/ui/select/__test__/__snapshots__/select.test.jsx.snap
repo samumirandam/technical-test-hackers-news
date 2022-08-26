@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for Select ui component Should renders the same component 1`] = `
+<div>
+  <select
+    class="Select"
+    data-testid="Select"
+  >
+    <option
+      value="reactjs"
+    >
+      Reactjs
+    </option>
+  </select>
+</div>
+`;

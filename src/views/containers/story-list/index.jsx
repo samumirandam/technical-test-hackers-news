@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import "./story-list.scss";
+import './story-list.scss';
 
-const StoryList = ({ children }) => {
-  return <section className="StoryList">{children}</section>;
-};
+const StoryList = ({ children }) => <section className="StoryList">{children}</section>;
 
 export default StoryList;

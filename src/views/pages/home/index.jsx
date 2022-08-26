@@ -1,24 +1,44 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+/* eslint-disable import/no-unresolved */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { getStoryListAction } from "@actions";
+import { getStoryListAction } from '@actions';
 
-import StoryList from "@containers/story-list";
+import StoryList from '@containers/story-list';
 
-import StoryCard from "@components/story-card";
+import StoryCard from '@components/story-card';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import Button from "@ui/button";
+import Button from '@ui/button';
+import Select from '@ui/select';
 
-import "./home.scss";
+import './home.scss';
+
+const OPTIONS = [
+  { value: '', label: 'Select your news' },
+  { value: 'angular', label: 'Angular' },
+  { value: 'reactjs', label: 'Reactjs' },
+  { value: 'vuejs', label: 'Vuejs' },
+];
 
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { query } = useParams();
 
   const storyList = useSelector((state) => state.storyList?.data?.hits);
 
+  const handleChange = (value) => {
+    if (value) {
+      navigate(`/query/${value}`);
+    } else {
+      navigate('/');
+    }
+  };
+
   useEffect(() => {
-    dispatch(getStoryListAction({ query: "reactjs" }));
-  }, []);
+    dispatch(getStoryListAction({ query: query || OPTIONS[0].value }));
+  }, [query]);
 
   return (
     <section className="Home" data-testid="Home">
@@ -26,10 +46,14 @@ const Home = () => {
         <Button className="Home__tab">All</Button>
         <Button className="Home__tab">My faves</Button>
       </div>
-      <p className="Home__filter">DropDown</p>
+      <Select
+        className="Home__filter"
+        options={OPTIONS}
+        handleChange={handleChange}
+      />
       <StoryList>
-        {storyList &&
-          storyList.map((story) => (
+        {storyList
+          && storyList.map((story) => (
             <StoryCard
               key={story.objectID}
               author={story.author}
