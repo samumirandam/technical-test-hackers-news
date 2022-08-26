@@ -1,7 +1,9 @@
-import React from "react";
-import { render, screen, fireEvent } from "@utils/test-utils";
+/* eslint-disable import/no-unresolved */
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import { render, screen, fireEvent } from '@utils/test-utils';
 
-import Header from "../index";
+import Header from '../index';
 
 const defaultProps = {};
 
@@ -10,20 +12,20 @@ const setup = (properties = {}) => {
   return render(<Header {...setupStore} />, {});
 };
 
-describe("Test for Header component", () => {
-  test("Should render without errors", () => {
+describe('Test for Header component', () => {
+  test('Should render without errors', () => {
     setup();
-    expect(screen.getByText("HACKER NEWS")).toBeTruthy();
+    expect(screen.getByText('HACKER NEWS')).toBeTruthy();
   });
 
-  test("Should renders the same component", () => {
+  test('Should renders the same component', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();
   });
 
-  test("Should render click in home icon", () => {
+  test('Should render click in home icon', () => {
     setup();
-    fireEvent.click(screen.getByText("HACKER NEWS"));
-    expect(global.window.location.pathname).toEqual("/");
+    fireEvent.click(screen.getByText('HACKER NEWS'));
+    expect(global.window.location.pathname).toEqual('/');
   });
 });

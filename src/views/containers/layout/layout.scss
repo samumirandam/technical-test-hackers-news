@@ -1,4 +1,4 @@
-@import "@styles/vars";
+@import '@styles/vars';
 
 .Layout {
   main {
@@ -7,7 +7,7 @@
 
     > section {
       grid-column: 2 / 3;
-      padding: $lg;
+      padding: 20px;
     }
   }
 }

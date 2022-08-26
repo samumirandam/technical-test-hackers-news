@@ -7,16 +7,16 @@ exports[`Test for Home page component Should renders the same component 1`] = `
     data-testid="Home"
   >
     <div
-      class="Home__tab-container"
+      class="PageTabs Home__tabs"
     >
       <button
-        class="Button Home__tab"
+        class="Button PageTabs__tab active"
         type="button"
       >
         All
       </button>
       <button
-        class="Button Home__tab"
+        class="Button PageTabs__tab"
         type="button"
       >
         My faves

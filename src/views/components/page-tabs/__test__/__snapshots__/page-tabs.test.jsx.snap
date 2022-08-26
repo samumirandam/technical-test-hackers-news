@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for PageTabs component Should renders the same component 1`] = `
+<div>
+  <div
+    class="PageTabs"
+  >
+    <button
+      class="Button PageTabs__tab active"
+      type="button"
+    >
+      All
+    </button>
+    <button
+      class="Button PageTabs__tab"
+      type="button"
+    >
+      My faves
+    </button>
+  </div>
+</div>
+`;

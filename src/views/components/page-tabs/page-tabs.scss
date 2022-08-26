@@ -1,0 +1,25 @@
+.PageTabs {
+  &__tab {
+    width: 98px;
+    border: 1px solid #d6d6d6;
+    padding: 5px;
+
+    color: #6a6a6a;
+    font-size: 1.6rem;
+    font-weight: 500;
+
+    &:nth-child(1) {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+    &:nth-child(2) {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+
+    &.active {
+      border-color: #1797ff;
+      color: #1797ff;
+    }
+  }
+}

@@ -34,12 +34,14 @@ describe('Test for StoryCard component', () => {
   });
 
   test('Should render click in story', () => {
+    window.open = jest.fn();
     setup();
     fireEvent.click(
       screen.getByText(
         'Threats of Blackouts Drive Japan to Embrace Nuclear Again',
       ),
     );
+    expect(window.open).toHaveBeenCalled();
   });
 
   test('Should render favortire icon without errors', () => {

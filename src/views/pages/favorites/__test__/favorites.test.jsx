@@ -3,19 +3,19 @@
 import React from 'react';
 import { render, screen } from '@utils/test-utils';
 
-import Button from '../index';
+import Favorites from '../index';
 
 const defaultProps = {};
 
 const setup = (properties = {}) => {
   const setupStore = { ...defaultProps, ...properties };
-  return render(<Button {...setupStore}>Press</Button>, {});
+  return render(<Favorites {...setupStore} />, {});
 };
 
-describe('Test for Button ui component', () => {
+describe('Test for Favorites page component', () => {
   test('Should render without errors', () => {
     setup();
-    expect(screen.getByText('Press')).toBeTruthy();
+    expect(screen.getByTestId('Favorites')).toBeTruthy();
   });
 
   test('Should renders the same component', () => {

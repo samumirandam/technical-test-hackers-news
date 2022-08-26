@@ -12,9 +12,11 @@ import StoryList from '@containers/story-list';
 import StoryCard from '@components/story-card';
 import Loader from '@components/loader';
 import Error from '@components/error';
+import PageTabs from '@components/page-tabs';
 
-import Button from '@ui/button';
 import Select from '@ui/select';
+
+import { changeList } from '@utils/changeList';
 
 import './home.scss';
 
@@ -58,19 +60,7 @@ const Home = () => {
   };
 
   const handleFavorite = (story) => {
-    let favoritesList = [];
-    if (
-      favorites.some((favorite) => favorite.objectID === story.objectID)
-    ) {
-      const favoriteIndex = favorites.findIndex(
-        (favorite) => favorite.objectID === story.objectID,
-      );
-      favoritesList = [...favorites];
-      favoritesList.splice(favoriteIndex, 1);
-    } else {
-      favoritesList = [...favorites, story];
-    }
-    changeFavorites(favoritesList);
+    changeFavorites(changeList(favorites, story));
   };
 
   useEffect(() => {
@@ -81,10 +71,7 @@ const Home = () => {
 
   return (
     <section className="Home" data-testid="Home">
-      <div className="Home__tab-container">
-        <Button className="Home__tab">All</Button>
-        <Button className="Home__tab">My faves</Button>
-      </div>
+      <PageTabs className="Home__tabs" />
       <Select
         className="Home__filter"
         options={options}

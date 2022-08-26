@@ -48,12 +48,11 @@ StoryCard.propTypes = {
   storyTitle: PropTypes.string.isRequired,
   storyUrl: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  handleFavorite: PropTypes.func,
+  handleFavorite: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool,
 };
 
 StoryCard.defaultProps = {
-  handleFavorite: () => {},
   isFavorite: false,
 };
 

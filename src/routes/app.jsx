@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '@containers/layout';
 
 import Home from '@pages/home';
+import Favorites from '@pages/favorites';
 import NotFound from '@pages/not-found';
 
 import '@styles/global.css';
@@ -17,6 +18,7 @@ const App = () => (
           <Route index element={<Home />} />
           <Route path="query/:query" element={<Home />} />
         </Route>
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>

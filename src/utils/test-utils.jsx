@@ -1,4 +1,6 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -31,3 +33,7 @@ export * from '@testing-library/react';
 
 // override render method
 export { customRender as render };
+
+AllTheProviders.propTypes = {
+  children: PropTypes.element.isRequired,
+};

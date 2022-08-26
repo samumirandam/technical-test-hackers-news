@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import {
   GET_STORY_LIST_LOADING,
   GET_STORY_LIST_SUCCESS,
