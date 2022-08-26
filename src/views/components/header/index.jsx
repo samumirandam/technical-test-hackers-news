@@ -10,8 +10,12 @@ const Header = () => {
 
   return (
     <header className="Header">
-      <Button noStyles onClick={() => navigate("/", { replace: true })}>
-        <p className="Header__logo">HACKER NEWS</p>
+      <Button
+        className="Header__logo"
+        noStyles
+        onClick={() => navigate("/", { replace: true })}
+      >
+        <p className="Header__title">HACKER NEWS</p>
       </Button>
     </header>
   );

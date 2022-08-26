@@ -16,9 +16,10 @@ module.exports = {
     extensions: [".js", ".jsx"],
     alias: {
       "@api": path.resolve(__dirname, "src/api/"),
+      "@styles": path.resolve(__dirname, "src/assets/styles/"),
+      "@images": path.resolve(__dirname, "src/assets/images/"),
       "@actions": path.resolve(__dirname, "src/store/actions/"),
       "@reducers": path.resolve(__dirname, "src/store/reducers/"),
-      "@styles": path.resolve(__dirname, "src/styles/"),
       "@utils": path.resolve(__dirname, "src/utils/"),
       "@components": path.resolve(__dirname, "src/views/components/"),
       "@containers": path.resolve(__dirname, "src/views/containers/"),
@@ -46,6 +47,10 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
       },
     ],
   },

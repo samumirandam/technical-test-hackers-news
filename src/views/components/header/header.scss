@@ -11,8 +11,12 @@
 
   &__logo {
     grid-column: 2 / 3;
+  }
+
+  &__title {
     color: #3b3b3b;
     font-family: Baskerville;
     font-size: 2.8rem;
+    text-align: start;
   }
 }

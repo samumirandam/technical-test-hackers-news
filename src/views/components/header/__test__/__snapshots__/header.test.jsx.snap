@@ -6,11 +6,11 @@ exports[`Test for Header component Should renders the same component 1`] = `
     class="Header"
   >
     <button
-      class="Button noStyles"
+      class="Button Header__logo noStyles"
       type="button"
     >
       <p
-        class="Header__logo"
+        class="Header__title"
       >
         HACKER NEWS
       </p>

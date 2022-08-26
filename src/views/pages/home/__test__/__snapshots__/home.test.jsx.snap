@@ -6,9 +6,63 @@ exports[`Test for Home page component Should renders the same component 1`] = `
     class="Home"
     data-testid="Home"
   >
-    <p>
-      story
+    <div
+      class="Home__tab-container"
+    >
+      <button
+        class="Button Home__tab"
+        type="button"
+      >
+        All
+      </button>
+      <button
+        class="Button Home__tab"
+        type="button"
+      >
+        My faves
+      </button>
+    </div>
+    <p
+      class="Home__filter"
+    >
+      DropDown
     </p>
+    <section
+      class="StoryList"
+    >
+      <div
+        class="StoryCard"
+      >
+        <div
+          class="StoryCard__content"
+        >
+          <div
+            class="StoryCard__data"
+          >
+            <figure
+              class="StoryCard__time-image"
+            >
+              <svgrurl />
+            </figure>
+            <p>
+              2 hours ago by author
+            </p>
+          </div>
+          <p
+            class="StoryCard__title"
+          >
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          </p>
+        </div>
+        <div
+          class="StoryCard__favorite"
+        >
+          <figure>
+            <svgrurl />
+          </figure>
+        </div>
+      </div>
+    </section>
   </section>
 </div>
 `;
