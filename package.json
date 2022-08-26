@@ -65,6 +65,7 @@
       "^@root(.*)$": "<rootDir>/src$1",
       "^@api(.*)$": "<rootDir>/src/api$1",
       "^@images(.*)$": "<rootDir>/src/assets/images$1",
+      "^@hooks(.*)$": "<rootDir>/src/hooks$1",
       "^@actions(.*)$": "<rootDir>/src/store/actions$1",
       "^@reducers(.*)$": "<rootDir>/src/store/reducers$1",
       "^@utils(.*)$": "<rootDir>/src/utils$1",

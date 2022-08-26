@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getStoryListAction } from '@actions';
 
+import useLocalStorage from '@hooks/useLocalStorage';
+
 import StoryList from '@containers/story-list';
 
 import StoryCard from '@components/story-card';
@@ -14,13 +16,6 @@ import Select from '@ui/select';
 
 import './home.scss';
 
-const OPTIONS = [
-  { value: '', label: 'Select your news' },
-  { value: 'angular', label: 'Angular' },
-  { value: 'reactjs', label: 'Reactjs' },
-  { value: 'vuejs', label: 'Vuejs' },
-];
-
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,17 +23,35 @@ const Home = () => {
 
   const storyList = useSelector((state) => state.storyList?.data?.hits);
 
+  const {
+    item: filter,
+    saveItem: changeFilter,
+    // loading: filterLoading,
+    // error: filterError,
+  } = useLocalStorage('FILTER', '');
+
+  const options = [
+    { value: '', label: 'Select your news', selected: filter === '' },
+    { value: 'angular', label: 'Angular', selected: filter === 'angular' },
+    { value: 'reactjs', label: 'Reactjs', selected: filter === 'reactjs' },
+    { value: 'vuejs', label: 'Vuejs', selected: filter === 'vuejs' },
+  ];
+
   const handleChange = (value) => {
     if (value) {
       navigate(`/query/${value}`);
+      changeFilter(value);
     } else {
       navigate('/');
+      changeFilter('');
     }
   };
 
   useEffect(() => {
-    dispatch(getStoryListAction({ query: query || OPTIONS[0].value }));
-  }, [query]);
+    dispatch(
+      getStoryListAction({ query: query || filter || options[0].value }),
+    );
+  }, [query, filter]);
 
   return (
     <section className="Home" data-testid="Home">
@@ -48,7 +61,7 @@ const Home = () => {
       </div>
       <Select
         className="Home__filter"
-        options={OPTIONS}
+        options={options}
         handleChange={handleChange}
       />
       <StoryList>
