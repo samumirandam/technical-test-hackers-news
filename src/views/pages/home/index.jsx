@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getStoryListAction, restoreStoryListAction } from '@actions';
 
 import useLocalStorage from '@hooks/useLocalStorage';
+import useLastElement from '@hooks/useLastElement';
 
 import StoryList from '@containers/story-list';
 
@@ -15,7 +16,6 @@ import Error from '@components/error';
 import PageTabs from '@components/page-tabs';
 
 import Select from '@ui/select';
-import Button from '@ui/button';
 
 import { changeList } from '@utils/change-list';
 
@@ -73,6 +73,12 @@ const Home = () => {
     setPage(currentPage + 1);
   };
 
+  const { lastElementRef } = useLastElement(
+    isLoading,
+    page < totalPages,
+    handleGetMore,
+  );
+
   useEffect(() => {
     if (currentPage !== page) {
       dispatch(
@@ -110,9 +116,7 @@ const Home = () => {
       </StoryList>
       {(isLoading || filterLoading) && <Loader />}
       {(isError || filterError) && <Error error={errorDetail || filterError} />}
-      {page < totalPages && (
-        <Button onClick={handleGetMore}>Load more stories</Button>
-      )}
+      <div ref={lastElementRef} />
     </section>
   );
 };

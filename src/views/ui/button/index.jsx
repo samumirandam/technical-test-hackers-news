@@ -19,13 +19,14 @@ const Button = ({
 );
 
 Button.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
   noStyles: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
+  children: '',
   className: '',
   noStyles: false,
 };

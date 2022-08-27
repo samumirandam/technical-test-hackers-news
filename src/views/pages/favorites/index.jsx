@@ -18,8 +18,8 @@ const Favorites = () => {
   const {
     item: favorites,
     saveItem: changeFavorites,
-    isLoading,
-    isError,
+    loading,
+    error,
   } = useLocalStorage('FAVORITES', []);
 
   const handleFavorite = (story) => {
@@ -46,8 +46,8 @@ const Favorites = () => {
             />
           ))}
       </StoryList>
-      {isLoading && <Loader />}
-      {isError && <Error error={isError} />}
+      {loading && <Loader />}
+      {error && <Error error={error} />}
     </section>
   );
 };

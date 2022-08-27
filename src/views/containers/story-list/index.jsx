@@ -8,7 +8,7 @@ const StoryList = ({ children }) => (
 );
 
 StoryList.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 
 export default StoryList;
