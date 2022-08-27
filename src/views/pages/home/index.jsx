@@ -88,7 +88,7 @@ const Home = () => {
         }),
       );
     }
-  }, [query, page, filter]);
+  }, [query, page, filter, currentPage, isLoading, filterLoading]);
 
   return (
     <section className="Home" data-testid="Home">
