@@ -28,6 +28,7 @@
     "eslint": "^7.32.0 || ^8.2.0",
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "intersection-observer": "^0.12.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -52,6 +53,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
+    "jest-localstorage-mock": "^2.4.22",
     "mini-css-extract-plugin": "^2.6.1",
     "sass": "^1.54.5",
     "sass-loader": "^13.0.2",
@@ -78,6 +80,10 @@
       "./src/setup-test.js"
     ],
     "testEnvironment": "jsdom",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "resetMocks": false,
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
   }
 }

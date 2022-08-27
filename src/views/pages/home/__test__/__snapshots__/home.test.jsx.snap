@@ -87,6 +87,7 @@ exports[`Test for Home page component Should renders the same component 1`] = `
         </button>
       </div>
     </section>
+    <div />
   </section>
 </div>
 `;

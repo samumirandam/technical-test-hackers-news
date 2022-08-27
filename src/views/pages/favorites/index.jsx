@@ -10,7 +10,7 @@ import Loader from '@components/loader';
 import Error from '@components/error';
 import PageTabs from '@components/page-tabs';
 
-import { changeList } from '@utils/changeList';
+import { changeList } from '@utils/change-list';
 
 import './favorites.scss';
 
@@ -18,8 +18,8 @@ const Favorites = () => {
   const {
     item: favorites,
     saveItem: changeFavorites,
-    isLoading,
-    isError,
+    loading,
+    error,
   } = useLocalStorage('FAVORITES', []);
 
   const handleFavorite = (story) => {
@@ -46,8 +46,8 @@ const Favorites = () => {
             />
           ))}
       </StoryList>
-      {isLoading && <Loader />}
-      {isError && <Error error={isError} />}
+      {loading && <Loader />}
+      {error && <Error error={error} />}
     </section>
   );
 };

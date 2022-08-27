@@ -1,25 +1,25 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-unresolved */
 import React from 'react';
+import 'intersection-observer';
+
 import { render, screen, fireEvent } from '@utils/test-utils';
 
 import Home from '../index';
 
 const defaultProps = {
   storyList: {
-    data: {
-      hits: [
-        {
-          created_at: '2002-08-26T00:27:26.000Z',
-          author: 'didericis',
-          story_title:
-            'Threats of Blackouts Drive Japan to Embrace Nuclear Again',
-          story_url:
-            'https://financialpost.com/pmn/business-pmn/threats-of-blackouts-drive-japan-to-embrace-nuclear-again',
-          objectID: '32601835',
-        },
-      ],
-    },
+    data: [
+      {
+        created_at: '2002-08-26T00:27:26.000Z',
+        author: 'didericis',
+        story_title:
+          'Threats of Blackouts Drive Japan to Embrace Nuclear Again',
+        story_url:
+          'https://financialpost.com/pmn/business-pmn/threats-of-blackouts-drive-japan-to-embrace-nuclear-again',
+        objectID: '32601835',
+      },
+    ],
   },
 };
 
@@ -42,6 +42,19 @@ describe('Test for Home page component', () => {
   test('Should render click in favorite icon', () => {
     setup();
     fireEvent.click(screen.getByTestId('favorite-button'));
+    expect(localStorage.FAVORITES).toEqual(
+      JSON.stringify([
+        {
+          created_at: '2002-08-26T00:27:26.000Z',
+          author: 'didericis',
+          story_title:
+            'Threats of Blackouts Drive Japan to Embrace Nuclear Again',
+          story_url:
+            'https://financialpost.com/pmn/business-pmn/threats-of-blackouts-drive-japan-to-embrace-nuclear-again',
+          objectID: '32601835',
+        },
+      ]),
+    );
   });
 
   test('Should render change select', () => {
@@ -76,5 +89,17 @@ describe('Test for Home page component', () => {
     };
     setup(props);
     expect(screen.getByText('test error')).toBeTruthy();
+  });
+
+  test('Should render with no more pages', () => {
+    const props = {
+      storyList: {
+        meta: {
+          page: 0,
+        },
+      },
+    };
+    setup(props);
+    expect(screen.getByTestId('Home')).toBeTruthy();
   });
 });

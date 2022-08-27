@@ -1,11 +1,12 @@
 /* eslint-disable import/no-unresolved */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { getStoryListAction } from '@actions';
+import { getStoryListAction, restoreStoryListAction } from '@actions';
 
 import useLocalStorage from '@hooks/useLocalStorage';
+import useLastElement from '@hooks/useLastElement';
 
 import StoryList from '@containers/story-list';
 
@@ -16,7 +17,7 @@ import PageTabs from '@components/page-tabs';
 
 import Select from '@ui/select';
 
-import { changeList } from '@utils/changeList';
+import { changeList } from '@utils/change-list';
 
 import './home.scss';
 
@@ -25,10 +26,14 @@ const Home = () => {
   const navigate = useNavigate();
   const { query } = useParams();
 
-  const storyList = useSelector((state) => state.storyList?.data?.hits);
+  const storyList = useSelector((state) => state.storyList?.data);
+  const totalPages = useSelector((state) => state.storyList?.meta?.nbPages);
+  const currentPage = useSelector((state) => state.storyList?.meta?.page);
   const isLoading = useSelector((state) => state.storyList?.isLoading);
   const isError = useSelector((state) => state.storyList?.isError);
   const errorDetail = useSelector((state) => state.storyList?.errorDetail);
+
+  const [page, setPage] = useState(currentPage || 0);
 
   const {
     item: filter,
@@ -50,6 +55,7 @@ const Home = () => {
   ];
 
   const handleChange = (value) => {
+    dispatch(restoreStoryListAction());
     if (value) {
       navigate(`/query/${value}`);
       changeFilter(value);
@@ -63,11 +69,26 @@ const Home = () => {
     changeFavorites(changeList(favorites, story));
   };
 
+  const handleGetMore = () => {
+    setPage(currentPage + 1);
+  };
+
+  const { lastElementRef } = useLastElement(
+    isLoading,
+    page < totalPages,
+    handleGetMore,
+  );
+
   useEffect(() => {
-    dispatch(
-      getStoryListAction({ query: query || filter || options[0].value }),
-    );
-  }, [query, filter]);
+    if (currentPage !== page) {
+      dispatch(
+        getStoryListAction({
+          query: query || filter || options[0].value,
+          page,
+        }),
+      );
+    }
+  }, [query, page]);
 
   return (
     <section className="Home" data-testid="Home">
@@ -95,6 +116,7 @@ const Home = () => {
       </StoryList>
       {(isLoading || filterLoading) && <Loader />}
       {(isError || filterError) && <Error error={errorDetail || filterError} />}
+      <div ref={lastElementRef} />
     </section>
   );
 };
