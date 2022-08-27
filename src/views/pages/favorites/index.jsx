@@ -10,7 +10,7 @@ import Loader from '@components/loader';
 import Error from '@components/error';
 import PageTabs from '@components/page-tabs';
 
-import { changeList } from '@utils/changeList';
+import { changeList } from '@utils/change-list';
 
 import './favorites.scss';
 

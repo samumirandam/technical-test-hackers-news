@@ -5,6 +5,7 @@ import {
   GET_STORY_LIST_LOADING,
   GET_STORY_LIST_SUCCESS,
   GET_STORY_LIST_ERROR,
+  RESTORE_STORY_LIST,
 } from './types';
 
 export const getStoryListSteps = {
@@ -13,23 +14,7 @@ export const getStoryListSteps = {
   }),
   success: (payload) => ({
     type: GET_STORY_LIST_SUCCESS,
-    payload: {
-      ...payload.data,
-      hits: payload.data.hits
-        .filter(
-          (story) => story.author
-            && story.story_title
-            && story.story_url
-            && story.created_at,
-        )
-        .map((story) => ({
-          objectID: story.objectID,
-          author: story.author,
-          story_title: story.story_title,
-          story_url: story.story_url,
-          created_at: story.created_at,
-        })),
-    },
+    payload,
   }),
   error: (error) => ({
     type: GET_STORY_LIST_ERROR,
@@ -39,6 +24,10 @@ export const getStoryListSteps = {
 
 export const getStoryListAction = (payload) => (dispatch) => {
   getData(dispatch, getStoryListSteps, {
-    method: `/search_by_date?query=${payload.query}`,
+    method: `/search_by_date?query=${payload.query}&page=${payload.page}`,
   });
 };
+
+export const restoreStoryListAction = () => ({
+  type: RESTORE_STORY_LIST,
+});

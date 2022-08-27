@@ -1,4 +1,4 @@
-import { changeList } from '../changeList';
+import { changeList } from '../change-list';
 
 describe('Test for changeList util', () => {
   test('Should added new element to list', () => {

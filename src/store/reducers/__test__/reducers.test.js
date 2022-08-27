@@ -3,6 +3,7 @@ import {
   GET_STORY_LIST_LOADING,
   GET_STORY_LIST_SUCCESS,
   GET_STORY_LIST_ERROR,
+  RESTORE_STORY_LIST,
 } from '@actions/types';
 import reducer, { initialState } from '../index';
 
@@ -31,7 +32,10 @@ describe('Test for Reducers', () => {
   });
 
   test('Should get story list success', () => {
-    const payload = {};
+    const payload = {
+      data: [],
+      meta: {},
+    };
     const action = {
       type: GET_STORY_LIST_SUCCESS,
       payload,
@@ -41,7 +45,8 @@ describe('Test for Reducers', () => {
       storyList: {
         ...initialState.storyList,
         isSucces: true,
-        data: payload,
+        data: payload.data,
+        meta: payload.meta,
       },
     };
     expect(reducer(initialState, action)).toEqual(expected);
@@ -60,6 +65,16 @@ describe('Test for Reducers', () => {
         isError: true,
         errorDetail: payload,
       },
+    };
+    expect(reducer(initialState, action)).toEqual(expected);
+  });
+
+  test('Should restore story list', () => {
+    const action = {
+      type: RESTORE_STORY_LIST,
+    };
+    const expected = {
+      ...initialState,
     };
     expect(reducer(initialState, action)).toEqual(expected);
   });
