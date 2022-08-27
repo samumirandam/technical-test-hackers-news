@@ -80,7 +80,7 @@ const Home = () => {
   );
 
   useEffect(() => {
-    if (currentPage !== page) {
+    if (currentPage !== page && !isLoading && !filterLoading) {
       dispatch(
         getStoryListAction({
           query: query || filter || options[0].value,
@@ -88,7 +88,7 @@ const Home = () => {
         }),
       );
     }
-  }, [query, page]);
+  }, [query, page, filter]);
 
   return (
     <section className="Home" data-testid="Home">
